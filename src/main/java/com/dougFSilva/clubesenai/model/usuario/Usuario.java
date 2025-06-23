@@ -35,7 +35,7 @@ public class Usuario implements UserDetails {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToOne 
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "pessoa_id", unique = true, nullable = false)
 	private Pessoa pessoa;
 	

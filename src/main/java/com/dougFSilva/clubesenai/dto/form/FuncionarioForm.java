@@ -1,4 +1,4 @@
-package com.dougFSilva.clubesenai.dto.dto;
+package com.dougFSilva.clubesenai.dto.form;
 
 import java.time.LocalDate;
 
