@@ -12,14 +12,17 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Email;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @Table(name = "tb_pessoas")
 @Inheritance(strategy = InheritanceType.JOINED)
 @NoArgsConstructor
+@AllArgsConstructor
+@SuperBuilder
 @Data
 public abstract class Pessoa {
 
@@ -33,7 +36,6 @@ public abstract class Pessoa {
 	@Column(nullable = false)
 	private String nome;
 	
-	@Email(message = "Email inválido")
 	private String email;
 	
 	private LocalDate dataNascimento;

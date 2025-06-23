@@ -18,12 +18,14 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "tb_usuarios")
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 public class Usuario implements UserDetails {
 
