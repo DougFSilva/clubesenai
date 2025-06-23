@@ -1,4 +1,4 @@
-package com.dougFSilva.clubesenai.model;
+package com.dougFSilva.clubesenai.model.pessoa;
 
 import java.time.LocalDate;
 
@@ -27,6 +27,9 @@ public abstract class Pessoa {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(unique = true, nullable = false)
+	private String matricula;
+	
 	@Column(nullable = false)
 	private String nome;
 	
@@ -37,5 +40,9 @@ public abstract class Pessoa {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Endereco endereco;
+	
+	private String tagAcesso;
+	
+	private boolean liberado;
 	
 }

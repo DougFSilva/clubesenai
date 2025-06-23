@@ -1,10 +1,12 @@
-package com.dougFSilva.clubesenai.model;
+package com.dougFSilva.clubesenai.model.usuario;
 
 import java.util.Collection;
 import java.util.Collections;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.dougFSilva.clubesenai.model.pessoa.Pessoa;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

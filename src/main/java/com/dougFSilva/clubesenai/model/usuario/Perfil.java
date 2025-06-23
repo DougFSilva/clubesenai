@@ -1,4 +1,4 @@
-package com.dougFSilva.clubesenai.model;
+package com.dougFSilva.clubesenai.model.usuario;
 
 import org.springframework.security.core.GrantedAuthority;
 

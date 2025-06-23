@@ -1,4 +1,4 @@
-package com.dougFSilva.clubesenai.model;
+package com.dougFSilva.clubesenai.model.pessoa;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
