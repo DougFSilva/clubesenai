@@ -1,6 +1,6 @@
 package com.dougFSilva.clubesenai.repository;
 
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -14,5 +14,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 			new ObjetoNaoEncontradoException("Usuario com id " + id + " não encontrado!"));
 	}
 	
-	List<Usuario> findByPessoa_nomeContaining(String nome);
+	Optional<Usuario> findByUsername(String username);
+	
 }

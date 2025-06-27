@@ -6,8 +6,6 @@ import java.util.Collections;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.dougFSilva.clubesenai.model.pessoa.Pessoa;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,7 +14,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,9 +32,8 @@ public class Usuario implements UserDetails {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "pessoa_id", unique = true, nullable = false)
-	private Pessoa pessoa;
+	@Column(unique = true, nullable = false)
+	private String username;
 	
 	@Column(nullable = false)
 	private String password;
@@ -58,6 +54,6 @@ public class Usuario implements UserDetails {
 
 	@Override
 	public String getUsername() {
-		return this.pessoa.getEmail();
+		return this.username;
 	}
 }

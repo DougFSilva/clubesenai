@@ -36,6 +36,7 @@ public abstract class Pessoa {
 	@Column(nullable = false)
 	private String nome;
 	
+	@Column(nullable = false)
 	private String email;
 	
 	private LocalDate dataNascimento;

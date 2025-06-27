@@ -1,11 +1,14 @@
 package com.dougFSilva.clubesenai.model.funcionario;
 
 import com.dougFSilva.clubesenai.model.pessoa.Pessoa;
+import com.dougFSilva.clubesenai.model.usuario.Usuario;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,5 +30,8 @@ public class Funcionario extends Pessoa{
 	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private Cargo cargo;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Usuario usuario;
 
 }
