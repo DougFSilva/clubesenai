@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 
-public record CadastraSocioForm(
+public record EditaSocioForm(
 		
 		@NotBlank(message = "O campo matrícula deve ser preenchido")
 		String matricula,

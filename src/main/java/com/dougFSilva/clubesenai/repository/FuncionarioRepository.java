@@ -1,5 +1,7 @@
 package com.dougFSilva.clubesenai.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.dougFSilva.clubesenai.exception.ObjetoNaoEncontradoException;
@@ -11,6 +13,8 @@ public interface FuncionarioRepository extends JpaRepository<Funcionario, Long> 
 		return findById(id).orElseThrow(() -> 
 			new ObjetoNaoEncontradoException("Funcionário com id " + id + " não encontrado!"));
 	}
+	
+	List<Funcionario> findByNomeContaining(String nome);
 	
 	boolean existsByMatricula(String matricula);
 	
