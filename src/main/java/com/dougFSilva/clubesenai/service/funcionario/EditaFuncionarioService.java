@@ -1,20 +1,24 @@
 package com.dougFSilva.clubesenai.service.funcionario;
 
+import org.springframework.stereotype.Service;
+
+import com.dougFSilva.clubesenai.dto.dto.FuncionarioResponse;
 import com.dougFSilva.clubesenai.dto.form.EditaFuncionarioForm;
 import com.dougFSilva.clubesenai.model.funcionario.Funcionario;
 import com.dougFSilva.clubesenai.model.usuario.Perfil;
 import com.dougFSilva.clubesenai.repository.FuncionarioRepository;
-import com.dougFSilva.clubesenai.service.pessoa.ValidaPessoa;
+import com.dougFSilva.clubesenai.service.pessoa.ValidaPessoaService;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class EditaFuncionario {
+@Service
+public class EditaFuncionarioService {
 
 	private final FuncionarioRepository repository;
-	private final ValidaPessoa validaPessoa;
+	private final ValidaPessoaService validaPessoa;
 	
-	public Long editar(Long id, EditaFuncionarioForm form) {
+	public FuncionarioResponse editar(Long id, EditaFuncionarioForm form) {
 		Funcionario funcionario = repository.findByIdOrElseThrow(id);
 		if (form.matricula() != funcionario.getMatricula()) {
 			validaPessoa.validarUnicaMatricula(form.matricula());
@@ -34,6 +38,6 @@ public class EditaFuncionario {
 		funcionario.getEndereco().setCidade(form.cidade());
 		funcionario.getEndereco().setRua(form.rua());
 		funcionario.getEndereco().setNumero(form.numero());
-		return repository.save(funcionario).getId();
+		return FuncionarioResponse.deFuncionario(repository.save(funcionario));
 	}
 }

@@ -1,18 +1,21 @@
 package com.dougFSilva.clubesenai.service.socio;
 
+import org.springframework.stereotype.Service;
+
 import com.dougFSilva.clubesenai.dto.form.CadastraSocioForm;
 import com.dougFSilva.clubesenai.model.pessoa.Endereco;
 import com.dougFSilva.clubesenai.model.socio.Socio;
 import com.dougFSilva.clubesenai.repository.SocioRepository;
-import com.dougFSilva.clubesenai.service.pessoa.ValidaPessoa;
+import com.dougFSilva.clubesenai.service.pessoa.ValidaPessoaService;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class CadastraSocio {
+@Service
+public class CadastraSocioService {
 
 	private final SocioRepository repository;
-	private final ValidaPessoa validaPessoa;
+	private final ValidaPessoaService validaPessoa;
 	
 	public Long cadastrar(CadastraSocioForm form) {
 		validaPessoa.validarUnicaMatricula(form.matricula());

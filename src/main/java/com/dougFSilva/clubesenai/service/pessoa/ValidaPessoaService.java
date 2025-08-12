@@ -1,12 +1,15 @@
 package com.dougFSilva.clubesenai.service.pessoa;
 
+import org.springframework.stereotype.Service;
+
 import com.dougFSilva.clubesenai.exception.ErroDeOperacaoComPessoaException;
 import com.dougFSilva.clubesenai.repository.FuncionarioRepository;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class ValidaPessoa {
+@Service
+public class ValidaPessoaService {
 	
 	private final FuncionarioRepository repository;
 

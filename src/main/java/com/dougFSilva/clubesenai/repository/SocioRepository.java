@@ -1,5 +1,7 @@
 package com.dougFSilva.clubesenai.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.dougFSilva.clubesenai.exception.ObjetoNaoEncontradoException;
@@ -11,4 +13,6 @@ public interface SocioRepository extends JpaRepository<Socio, Long> {
 		return findById(id).orElseThrow(() -> 
 			new ObjetoNaoEncontradoException("Sócio com id " + id + " não encontrado!"));
 	}
+	
+	List<Socio>findByNomeContaining(String nome);
 }

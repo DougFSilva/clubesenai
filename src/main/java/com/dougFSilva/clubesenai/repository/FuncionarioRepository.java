@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.dougFSilva.clubesenai.exception.ObjetoNaoEncontradoException;
+import com.dougFSilva.clubesenai.model.funcionario.Cargo;
 import com.dougFSilva.clubesenai.model.funcionario.Funcionario;
 
 public interface FuncionarioRepository extends JpaRepository<Funcionario, Long> {
@@ -15,6 +16,8 @@ public interface FuncionarioRepository extends JpaRepository<Funcionario, Long> 
 	}
 	
 	List<Funcionario> findByNomeContaining(String nome);
+	
+	List<Funcionario> findByCargo(Cargo cargo);
 	
 	boolean existsByMatricula(String matricula);
 	

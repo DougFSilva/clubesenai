@@ -1,17 +1,20 @@
 package com.dougFSilva.clubesenai.service.socio;
 
+import org.springframework.stereotype.Service;
+
 import com.dougFSilva.clubesenai.dto.form.EditaSocioForm;
 import com.dougFSilva.clubesenai.model.socio.Socio;
 import com.dougFSilva.clubesenai.repository.SocioRepository;
-import com.dougFSilva.clubesenai.service.pessoa.ValidaPessoa;
+import com.dougFSilva.clubesenai.service.pessoa.ValidaPessoaService;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class EditaSocio {
+@Service
+public class EditaSocioService {
 
 	private final SocioRepository repository;
-	private final ValidaPessoa validaPessoa;
+	private final ValidaPessoaService validaPessoa;
 	
 	public Long editar(Long id, EditaSocioForm form) {
 		Socio socio = repository.findByIdOrElseThrow(id);

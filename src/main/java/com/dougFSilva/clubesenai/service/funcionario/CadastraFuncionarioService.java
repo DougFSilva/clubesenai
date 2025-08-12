@@ -1,5 +1,7 @@
 package com.dougFSilva.clubesenai.service.funcionario;
 
+import org.springframework.stereotype.Service;
+
 import com.dougFSilva.clubesenai.dto.form.CadastraFuncionarioForm;
 import com.dougFSilva.clubesenai.model.funcionario.Funcionario;
 import com.dougFSilva.clubesenai.model.pessoa.Endereco;
@@ -7,15 +9,16 @@ import com.dougFSilva.clubesenai.model.usuario.CodificadorDeSenha;
 import com.dougFSilva.clubesenai.model.usuario.Perfil;
 import com.dougFSilva.clubesenai.model.usuario.Usuario;
 import com.dougFSilva.clubesenai.repository.FuncionarioRepository;
-import com.dougFSilva.clubesenai.service.pessoa.ValidaPessoa;
+import com.dougFSilva.clubesenai.service.pessoa.ValidaPessoaService;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class CadastraFuncionario {
+@Service
+public class CadastraFuncionarioService {
 	
 	private final FuncionarioRepository repository;
-	private final ValidaPessoa validaPessoa;
+	private final ValidaPessoaService validaPessoa;
 	private final CodificadorDeSenha codificador;
 	
 	public Long cadastrar(CadastraFuncionarioForm form) {
