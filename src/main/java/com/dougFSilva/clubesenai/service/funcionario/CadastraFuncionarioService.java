@@ -1,10 +1,13 @@
 package com.dougFSilva.clubesenai.service.funcionario;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.dougFSilva.clubesenai.dto.form.CadastraFuncionarioForm;
 import com.dougFSilva.clubesenai.model.funcionario.Funcionario;
 import com.dougFSilva.clubesenai.model.pessoa.Endereco;
+import com.dougFSilva.clubesenai.model.pessoa.StatusAcesso;
 import com.dougFSilva.clubesenai.model.usuario.CodificadorDeSenha;
 import com.dougFSilva.clubesenai.model.usuario.Perfil;
 import com.dougFSilva.clubesenai.model.usuario.Usuario;
@@ -21,6 +24,8 @@ public class CadastraFuncionarioService {
 	private final ValidaPessoaService validaPessoa;
 	private final CodificadorDeSenha codificador;
 	
+	@Transactional
+	@PreAuthorize("hasAnyRole('ADMIN', 'FUNCIONARIO')")
 	public Long cadastrar(CadastraFuncionarioForm form) {
 		validaPessoa.validarUnicaMatricula(form.matricula());
 		validaPessoa.validarUnicoEmail(form.email());
@@ -37,6 +42,8 @@ public class CadastraFuncionarioService {
 			.endereco(endereco)
 			.tagAcesso(null)
 			.liberado(false)
+			.statusAcesso(StatusAcesso.FORA_DO_CLUBE)
+			.cargo(form.cargo())
 			.build();
 		return repository.save(funcionario).getId();
 	}

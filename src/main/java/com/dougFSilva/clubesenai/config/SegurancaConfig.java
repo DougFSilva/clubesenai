@@ -19,6 +19,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console;
 
 import lombok.RequiredArgsConstructor;
 
@@ -47,7 +48,7 @@ public class SegurancaConfig {
 		.cors(cors -> cors.configurationSource(corsConfigurationSource()))
 		.authorizeHttpRequests(authorizeRequests -> authorizeRequests
 				.requestMatchers(HttpMethod.POST,"/auth").permitAll()
-				 .requestMatchers(
+				.requestMatchers(
 			                "/swagger-ui/**",
 			                "/v3/api-docs/**",
 			                "/swagger-resources/**",
@@ -55,7 +56,9 @@ public class SegurancaConfig {
 			                "/webjars/**",
 			                "/ws/**"
 			            ).permitAll()
+				.requestMatchers(toH2Console()).permitAll()
 				.anyRequest().authenticated())
+        		.headers(headers -> headers.frameOptions(frameOptions -> frameOptions.sameOrigin()))
 				.sessionManagement(sessionManagement -> 
 			sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.addFilterBefore(filtroJWT, UsernamePasswordAuthenticationFilter.class);

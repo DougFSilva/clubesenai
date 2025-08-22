@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import com.dougFSilva.clubesenai.dto.dto.ErroResponse;
+import com.dougFSilva.clubesenai.exception.AcessoNaoAutorizadoException;
 import com.dougFSilva.clubesenai.exception.ErroDeAutenticacaoDeUsuarioException;
 import com.dougFSilva.clubesenai.exception.ErroDeOperacaoComFuncionarioException;
 import com.dougFSilva.clubesenai.exception.ErroDeOperacaoComPessoaException;
@@ -59,6 +60,18 @@ public class ExceptionHandlerController {
 	@ExceptionHandler(ErroDeAutenticacaoDeUsuarioException.class)
 	public ResponseEntity<ErroResponse> erroDeAutenticacaoDeUsuarioException(
 			ErroDeAutenticacaoDeUsuarioException e,
+			HttpServletRequest request) {
+		ErroResponse erro = new ErroResponse(
+				LocalDateTime.now(), 
+				HttpStatus.UNAUTHORIZED.value(), 
+				e.getMessage(),
+				request.getRequestURI());
+		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(erro);
+	}
+	
+	@ExceptionHandler(AcessoNaoAutorizadoException.class)
+	public ResponseEntity<ErroResponse> acessoNaoAutorizadoException(
+			AcessoNaoAutorizadoException e,
 			HttpServletRequest request) {
 		ErroResponse erro = new ErroResponse(
 				LocalDateTime.now(), 

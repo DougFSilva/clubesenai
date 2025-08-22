@@ -26,8 +26,8 @@ public class CriaUsuarioSistema {
 		if (!repository.existsByUsername(username)) {
 			Usuario usuario = new Usuario(
 					null, 
-					codificadorDeSenha.codificar(senha), 
-					senha,
+					username,
+					codificadorDeSenha.codificar(senha),
 					new Perfil(TipoPerfil.ADMIN));
 			repository.save(usuario);
 		}

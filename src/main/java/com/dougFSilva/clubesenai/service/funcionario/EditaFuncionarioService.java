@@ -1,6 +1,8 @@
 package com.dougFSilva.clubesenai.service.funcionario;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.dougFSilva.clubesenai.dto.dto.FuncionarioResponse;
 import com.dougFSilva.clubesenai.dto.form.EditaFuncionarioForm;
@@ -18,6 +20,8 @@ public class EditaFuncionarioService {
 	private final FuncionarioRepository repository;
 	private final ValidaPessoaService validaPessoa;
 	
+	@Transactional
+	@PreAuthorize("hasAnyRole('ADMIN', 'FUNCIONARIO')")
 	public FuncionarioResponse editar(Long id, EditaFuncionarioForm form) {
 		Funcionario funcionario = repository.findByIdOrElseThrow(id);
 		if (form.matricula() != funcionario.getMatricula()) {

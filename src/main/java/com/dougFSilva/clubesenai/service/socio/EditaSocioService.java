@@ -1,6 +1,8 @@
 package com.dougFSilva.clubesenai.service.socio;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.dougFSilva.clubesenai.dto.dto.SocioResponse;
 import com.dougFSilva.clubesenai.dto.form.EditaSocioForm;
@@ -17,6 +19,8 @@ public class EditaSocioService {
 	private final SocioRepository repository;
 	private final ValidaPessoaService validaPessoa;
 	
+	@Transactional
+	@PreAuthorize("hasAnyRole('ADMIN', 'FUNCIONARIO')")
 	public SocioResponse editar(Long id, EditaSocioForm form) {
 		Socio socio = repository.findByIdOrElseThrow(id);
 		if (form.matricula() != socio.getMatricula()) {
