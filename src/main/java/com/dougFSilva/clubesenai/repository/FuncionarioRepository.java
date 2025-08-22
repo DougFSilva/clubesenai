@@ -15,13 +15,8 @@ public interface FuncionarioRepository extends JpaRepository<Funcionario, Long> 
 			new ObjetoNaoEncontradoException("Funcionário com id " + id + " não encontrado!"));
 	}
 	
-	List<Funcionario> findByNomeContaining(String nome);
+	List<Funcionario> findByNomeContainingOrderByNomeAsc(String nome);
 	
 	List<Funcionario> findByCargo(Cargo cargo);
 	
-	boolean existsByMatricula(String matricula);
-	
-	boolean existsByEmail(String email);
-	
-	boolean existsByTagAcesso(String tagAcesso);
 }

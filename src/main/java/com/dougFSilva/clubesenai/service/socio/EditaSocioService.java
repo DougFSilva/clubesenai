@@ -2,6 +2,7 @@ package com.dougFSilva.clubesenai.service.socio;
 
 import org.springframework.stereotype.Service;
 
+import com.dougFSilva.clubesenai.dto.dto.SocioResponse;
 import com.dougFSilva.clubesenai.dto.form.EditaSocioForm;
 import com.dougFSilva.clubesenai.model.socio.Socio;
 import com.dougFSilva.clubesenai.repository.SocioRepository;
@@ -16,7 +17,7 @@ public class EditaSocioService {
 	private final SocioRepository repository;
 	private final ValidaPessoaService validaPessoa;
 	
-	public Long editar(Long id, EditaSocioForm form) {
+	public SocioResponse editar(Long id, EditaSocioForm form) {
 		Socio socio = repository.findByIdOrElseThrow(id);
 		if (form.matricula() != socio.getMatricula()) {
 			validaPessoa.validarUnicaMatricula(form.matricula());
@@ -34,6 +35,6 @@ public class EditaSocioService {
 		socio.getEndereco().setCidade(form.cidade());
 		socio.getEndereco().setRua(form.rua());
 		socio.getEndereco().setNumero(form.numero());
-		return repository.save(socio).getId();
+		return SocioResponse.deSocio(repository.save(socio));
 	}
 }

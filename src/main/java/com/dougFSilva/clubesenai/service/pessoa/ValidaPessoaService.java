@@ -3,7 +3,7 @@ package com.dougFSilva.clubesenai.service.pessoa;
 import org.springframework.stereotype.Service;
 
 import com.dougFSilva.clubesenai.exception.ErroDeOperacaoComPessoaException;
-import com.dougFSilva.clubesenai.repository.FuncionarioRepository;
+import com.dougFSilva.clubesenai.repository.PessoaRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 public class ValidaPessoaService {
 	
-	private final FuncionarioRepository repository;
+	private final PessoaRepository repository;
 
 	public void validarUnicaMatricula(String matricula) {
 		if (repository.existsByMatricula(matricula)) {

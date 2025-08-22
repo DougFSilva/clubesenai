@@ -21,7 +21,7 @@ public class BuscaFuncionarioService {
 	}
 	
 	public List<FuncionarioResponse> buscarPeloNome(String nome) {
-		return repository.findByNomeContaining(nome).stream().map(FuncionarioResponse::new).toList();
+		return repository.findByNomeContainingOrderByNomeAsc(nome).stream().map(FuncionarioResponse::new).toList();
 	}
 	
 	public List<FuncionarioResponse> buscarPeloCargo(Cargo cargo) {

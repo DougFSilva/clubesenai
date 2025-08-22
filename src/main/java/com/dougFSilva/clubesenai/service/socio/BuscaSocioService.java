@@ -20,7 +20,7 @@ public class BuscaSocioService {
 	}
 	
 	public List<SocioResponse> buscarPeloNome(String nome) {
-		return repository.findByNomeContaining(nome).stream().map(SocioResponse::new).toList();
+		return repository.findByNomeContainingOrderByNomeAsc(nome).stream().map(SocioResponse::new).toList();
 	} 
 	
 	public List<SocioResponse> buscarTodos() {
