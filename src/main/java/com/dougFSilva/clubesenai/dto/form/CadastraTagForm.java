@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 
 public record CadastraTagForm(
 		
-		@NotNull(message = "O campo id da pessoa deve ser preenchido")
+		@NotNull(message = "O campo pessoaId deve ser preenchido")
 		Long pessoaId,
 		
 		@NotBlank(message = "O campo tag deve ser preenchido")

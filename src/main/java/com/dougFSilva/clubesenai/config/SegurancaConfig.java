@@ -54,7 +54,8 @@ public class SegurancaConfig {
 			                "/swagger-resources/**",
 			                "/swagger-ui.html",
 			                "/webjars/**",
-			                "/ws/**"
+			                "/ws/**",
+			                "/ws-direct"
 			            ).permitAll()
 				.requestMatchers(toH2Console()).permitAll()
 				.anyRequest().authenticated())
@@ -81,5 +82,6 @@ public class SegurancaConfig {
         source.registerCorsConfiguration("/**", configuracao);
         return source;
     }
-
+    
+  
 }

@@ -23,12 +23,12 @@ public class EditaSocioService {
 	@PreAuthorize("hasAnyRole('ADMIN', 'FUNCIONARIO')")
 	public SocioResponse editar(Long id, EditaSocioForm form) {
 		Socio socio = repository.findByIdOrElseThrow(id);
-		if (form.matricula() != socio.getMatricula()) {
+		if (!form.matricula().equals(socio.getMatricula())) {
 			validaPessoa.validarUnicaMatricula(form.matricula());
 			socio.setMatricula(form.matricula());
 		}
 		socio.setNome(form.nome());
-		if (form.email() != socio.getEmail()) {
+		if (!form.email().equals(socio.getEmail())) {
 			validaPessoa.validarUnicoEmail(form.email());
 			socio.setEmail(form.email());
 		}

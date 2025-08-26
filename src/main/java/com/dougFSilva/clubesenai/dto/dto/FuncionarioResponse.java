@@ -23,7 +23,8 @@ public class FuncionarioResponse extends PessoaResponse {
 				funcionario.getDataNascimento(), 
 				funcionario.getEndereco(), 
 				funcionario.getTagAcesso(), 
-				funcionario.isLiberado()
+				funcionario.isLiberado(),
+				funcionario.getStatusAcesso()
 				);
 		this.cargo = funcionario.getCargo();
 	}

@@ -69,7 +69,7 @@ public class FuncionarioController {
 		return ResponseEntity.ok().body(funcionario);
 	}
 
-	@GetMapping("/nome/{id}")
+	@GetMapping("/nome/{nome}")
 	@Operation(summary = "Buscar por nome", description = "Retorna uma lista de funcionários que contenham o nome informado")
 	public ResponseEntity<List<FuncionarioResponse>> buscarPeloNome(@PathVariable String nome) {
 		List<FuncionarioResponse> funcionarios = buscaFuncionarioService.buscarPeloNome(nome);

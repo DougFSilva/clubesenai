@@ -7,7 +7,7 @@ import com.dougFSilva.clubesenai.model.pessoa.Pessoa;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.PastOrPresent;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,6 +26,6 @@ import lombok.experimental.SuperBuilder;
 public class Socio extends Pessoa {
 
 	@Column(nullable = false)
-	@Past(message = "A data de associação não deve ser futura")
+	@PastOrPresent(message = "A data de associação não deve ser futura")
 	private LocalDate dataAssociacao; 
 }

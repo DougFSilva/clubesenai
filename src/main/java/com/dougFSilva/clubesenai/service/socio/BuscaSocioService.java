@@ -26,7 +26,7 @@ public class BuscaSocioService {
 	@Transactional(readOnly = true)
 	@PreAuthorize("hasAnyRole('ADMIN', 'FUNCIONARIO')")
 	public List<SocioResponse> buscarPeloNome(String nome) {
-		return repository.findByNomeContainingOrderByNomeAsc(nome).stream().map(SocioResponse::new).toList();
+		return repository.findByNomeContainingIgnoreCaseOrderByNomeAsc(nome).stream().map(SocioResponse::new).toList();
 	} 
 	
 	@Transactional(readOnly = true)

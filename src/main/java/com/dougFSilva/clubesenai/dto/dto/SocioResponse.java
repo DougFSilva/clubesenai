@@ -24,7 +24,8 @@ public class SocioResponse extends PessoaResponse {
 				socio.getDataNascimento(), 
 				socio.getEndereco(), 
 				socio.getTagAcesso(), 
-				socio.isLiberado()
+				socio.isLiberado(),
+				socio.getStatusAcesso()
 				);
 		this.dataAssociacao = socio.getDataAssociacao();
 	}

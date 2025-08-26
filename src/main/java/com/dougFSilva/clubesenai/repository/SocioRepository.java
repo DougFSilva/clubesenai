@@ -14,5 +14,5 @@ public interface SocioRepository extends JpaRepository<Socio, Long> {
 			new ObjetoNaoEncontradoException("Sócio com id " + id + " não encontrado!"));
 	}
 	
-	List<Socio>findByNomeContainingOrderByNomeAsc(String nome);
+	List<Socio>findByNomeContainingIgnoreCaseOrderByNomeAsc(String nome);
 }

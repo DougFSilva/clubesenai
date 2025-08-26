@@ -27,7 +27,7 @@ public class BuscaFuncionarioService {
 	@Transactional(readOnly = true)
 	@PreAuthorize("hasAnyRole('ADMIN', 'FUNCIONARIO')")
 	public List<FuncionarioResponse> buscarPeloNome(String nome) {
-		return repository.findByNomeContainingOrderByNomeAsc(nome).stream().map(FuncionarioResponse::new).toList();
+		return repository.findByNomeContainingIgnoreCaseOrderByNomeAsc(nome).stream().map(FuncionarioResponse::new).toList();
 	}
 	
 	@Transactional(readOnly = true)

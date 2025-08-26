@@ -24,12 +24,12 @@ public class EditaFuncionarioService {
 	@PreAuthorize("hasAnyRole('ADMIN', 'FUNCIONARIO')")
 	public FuncionarioResponse editar(Long id, EditaFuncionarioForm form) {
 		Funcionario funcionario = repository.findByIdOrElseThrow(id);
-		if (form.matricula() != funcionario.getMatricula()) {
+		if (!form.matricula().equals(funcionario.getMatricula())) {
 			validaPessoa.validarUnicaMatricula(form.matricula());
 			funcionario.setMatricula(form.matricula());
 		}
 		funcionario.setNome(form.nome());
-		if (form.email() != funcionario.getEmail()) {
+		if (!form.email().equals(funcionario.getEmail())) {
 			validaPessoa.validarUnicoEmail(form.email());
 			funcionario.setEmail(form.email());
 			funcionario.getUsuario().setUsername(form.email());
