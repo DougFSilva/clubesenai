@@ -1,6 +1,6 @@
 # API Clube Senai
 
-Bem-vindo à API Clube Senai, uma solução de backend robusta para a gestão das operações de um clube. Esta aplicação oferece um conjunto completo de endpoints para autenticação de usuários, gerenciamento de membros e funcionários, e rastreamento de acesso em tempo real. A idéia é utilizar essa API para consumo nas aulas de frontend com Angular
+Bem-vindo à API Clube Senai, uma solução de backend robusta para a gestão das operações de um clube. Esta aplicação oferece um conjunto completo de endpoints para autenticação de usuários, gerenciamento de membros e funcionários, e rastreamento de acesso em tempo real.
 
 ## 🚀 Funcionalidades
 
@@ -76,4 +76,11 @@ A aplicação utiliza o arquivo `application.properties` para sua configuração
 
 ## 🕸️ WebSockets
 
-A
+A aplicação usa WebSockets para fornecer atualizações em tempo real sobre o acesso.
+
+* **Endpoint WebSocket:** `/ws`
+* **Endpoint SockJS:** `/ws-direct` (para conexões diretas, como no Postman)
+* **Prefixo do Message Broker:** `/topic`
+* **Prefixo do Destino da Aplicação:** `/websocket`
+
+**Aplicações Cliente podem se inscrever no tópico `/topic/acesso` para receber informações em tempo real sobre entradas e saídas no clube.** O payload da mensagem será um objeto `PessoaResponse` que representa a pessoa que acabou de acessar o clube.
