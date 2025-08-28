@@ -1,6 +1,6 @@
 # API Clube Senai
 
-Bem-vindo à API Clube Senai, uma solução de backend robusta para a gestão das operações de um clube. Esta aplicação oferece um conjunto completo de endpoints para autenticação de usuários, gerenciamento de membros e funcionários, e rastreamento de acesso em tempo real.
+Bem-vindo à API Clube Senai, uma solução de backend robusta para a gestão das operações de um clube. Esta aplicação oferece um conjunto completo de endpoints para autenticação de usuários, gerenciamento de membros e funcionários, e rastreamento de acesso em tempo real. A idéia é utilizar essa API para consumo nas aulas de frontend com Angular
 
 ## 🚀 Funcionalidades
 
