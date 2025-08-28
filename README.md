@@ -76,11 +76,4 @@ A aplicação utiliza o arquivo `application.properties` para sua configuração
 
 ## 🕸️ WebSockets
 
-A aplicação usa WebSockets para fornecer atualizações em tempo real sobre o acesso.
-
-* **Endpoint WebSocket:** `/ws`
-* **Endpoint SockJS:** `/ws-direct` (para conexões diretas, como no Postman)
-* **Prefixo do Message Broker:** `/topic`
-* **Prefixo do Destino da Aplicação:** `/websocket`
-
-Clientes podem se inscrever em tópicos sob `/topic` para receber mensagens, por exemplo, `/topic/acesso` para atualizações de entrada e saída.
+A
