@@ -37,6 +37,10 @@ public class AcessoEntradaService {
 	}
 	
 	private void validaTentativaDeAcesso(Pessoa pessoa) {
+		if (!pessoa.isLiberado()) {
+			throw new AcessoNaoAutorizadoException(
+					String.format("Pessoa %s sem permissão de acesso", pessoa.getNome()));
+		}
 		if (pessoa.getStatusAcesso() == StatusAcesso.DENTRO_DO_CLUBE) {
 			throw new AcessoNaoAutorizadoException(
 					String.format("Pessoa %s já está dentro do clube", pessoa.getNome()));
