@@ -31,7 +31,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/funcionarios")
 @RequiredArgsConstructor
-@Tag(name = "Ambientes", description = "Endpoints para gerenciamento de ambientes")
+@Tag(name = "Funcionários", description = "Endpoints para gerenciamento de funcionários")
 public class FuncionarioController {
 
 	private final CadastraFuncionarioService cadastraFuncionarioService;
